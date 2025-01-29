@@ -1,21 +1,29 @@
 {
-  "name": "learningapp",
-  "module": "index.ts",
-  "type": "module",
-  "scripts": {
-    "bundle": "bun run --bun ./scripts/build.ts",
-    "clean": "bun run --bun ./scripts/clean.ts",
-    "start": "bun run --bun ./build/index.js",
-    "dev": "bun --watch run --bun ./src/index.ts",
-    "type-check": "tsc --noEmit"
-  },
-  "devDependencies": {
-    "@types/bun": "^1.2.1"
-  },
-  "peerDependencies": {
-    "typescript": "^5.7.3"
-  },
-  "dependencies": {
-    "react": "^19.0.0"
-  }
+	"name": "learning-app",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "bun --bun vite",
+		"bundle": "bun --bun tsc -b && bun --bun vite build",
+		"preview": "bun --bun vite preview",
+		"format": "bunx biome format --write ./src/*",
+		"check": "bunx biome check ./src/*"
+	},
+	"dependencies": {
+		"@tailwindcss/vite": "^4.0.0",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"tailwindcss": "^4.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@eslint/js": "^9.17.0",
+		"@types/react": "^19.0.8",
+		"@types/react-dom": "^19.0.3",
+		"@vitejs/plugin-react": "^4.3.4",
+		"globals": "^15.14.0",
+		"typescript": "^5.7.3",
+		"vite": "^6.0.5"
+	}
 }

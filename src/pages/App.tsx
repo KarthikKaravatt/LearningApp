@@ -1,4 +1,4 @@
-function App() {
+export default function App() {
   return (
     <>
       <h1
@@ -12,5 +12,3 @@ function App() {
     </>
   );
 }
-
-export default App;

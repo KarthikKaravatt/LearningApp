@@ -4,9 +4,9 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "bun --bun vite",
-		"bundle": "bun --bun tsc -b && bun --bun vite build",
-		"preview": "bun --bun vite preview",
+		"dev": "bunx --bun vite",
+		"bundle": "bunx --bun tsc -b && bun --bun vite build",
+		"preview": "bunx --bun vite preview",
 		"format": "bunx biome format --write ./src/*",
 		"check": "bunx biome check ./src/*"
 	},
@@ -14,11 +14,12 @@
 		"@tailwindcss/vite": "^4.0.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
+		"react-router-dom": "^7.1.3",
 		"tailwindcss": "^4.0.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@eslint/js": "^9.17.0",
+		"@types/bun": "^1.2.1",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
 		"@vitejs/plugin-react": "^4.3.4",

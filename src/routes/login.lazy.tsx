@@ -25,7 +25,7 @@ function Login() {
         <input type="password" className="border-1 p-1 rounded" id="password" />
         <Link
           className="border-1 my-4 bg-black text-white text-center rounded p-1 justify-center"
-          to="/group-creator"
+          to="/profile"
         >
           <button type="submit">Login</button>
         </Link>

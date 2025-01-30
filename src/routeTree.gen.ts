@@ -13,6 +13,7 @@ import { createFileRoute } from "@tanstack/react-router";
 // Import Routes
 
 import { Route as rootRoute } from "./routes/__root";
+import { Route as ProfileIndexImport } from "./routes/profile/index";
 import { Route as GroupCreatorIndexImport } from "./routes/group-creator/index";
 
 // Create Virtual Routes
@@ -33,6 +34,12 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: "/",
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import("./routes/index.lazy").then((d) => d.Route));
+
+const ProfileIndexRoute = ProfileIndexImport.update({
+  id: "/profile/",
+  path: "/profile/",
+  getParentRoute: () => rootRoute,
+} as any);
 
 const GroupCreatorIndexRoute = GroupCreatorIndexImport.update({
   id: "/group-creator/",
@@ -65,6 +72,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof GroupCreatorIndexImport;
       parentRoute: typeof rootRoute;
     };
+    "/profile/": {
+      id: "/profile/";
+      path: "/profile";
+      fullPath: "/profile";
+      preLoaderRoute: typeof ProfileIndexImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
@@ -74,12 +88,14 @@ export interface FileRoutesByFullPath {
   "/": typeof IndexLazyRoute;
   "/login": typeof LoginLazyRoute;
   "/group-creator": typeof GroupCreatorIndexRoute;
+  "/profile": typeof ProfileIndexRoute;
 }
 
 export interface FileRoutesByTo {
   "/": typeof IndexLazyRoute;
   "/login": typeof LoginLazyRoute;
   "/group-creator": typeof GroupCreatorIndexRoute;
+  "/profile": typeof ProfileIndexRoute;
 }
 
 export interface FileRoutesById {
@@ -87,14 +103,15 @@ export interface FileRoutesById {
   "/": typeof IndexLazyRoute;
   "/login": typeof LoginLazyRoute;
   "/group-creator/": typeof GroupCreatorIndexRoute;
+  "/profile/": typeof ProfileIndexRoute;
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "/login" | "/group-creator";
+  fullPaths: "/" | "/login" | "/group-creator" | "/profile";
   fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "/login" | "/group-creator";
-  id: "__root__" | "/" | "/login" | "/group-creator/";
+  to: "/" | "/login" | "/group-creator" | "/profile";
+  id: "__root__" | "/" | "/login" | "/group-creator/" | "/profile/";
   fileRoutesById: FileRoutesById;
 }
 
@@ -102,12 +119,14 @@ export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute;
   LoginLazyRoute: typeof LoginLazyRoute;
   GroupCreatorIndexRoute: typeof GroupCreatorIndexRoute;
+  ProfileIndexRoute: typeof ProfileIndexRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   LoginLazyRoute: LoginLazyRoute,
   GroupCreatorIndexRoute: GroupCreatorIndexRoute,
+  ProfileIndexRoute: ProfileIndexRoute,
 };
 
 export const routeTree = rootRoute
@@ -122,7 +141,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/login",
-        "/group-creator/"
+        "/group-creator/",
+        "/profile/"
       ]
     },
     "/": {
@@ -133,6 +153,9 @@ export const routeTree = rootRoute
     },
     "/group-creator/": {
       "filePath": "group-creator/index.tsx"
+    },
+    "/profile/": {
+      "filePath": "profile/index.tsx"
     }
   }
 }

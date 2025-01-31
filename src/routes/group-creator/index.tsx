@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/group-creator/")({
-  component: GroupCreator,
+	component: GroupCreator,
 });
 
 function GroupCreator() {
-  return <div>Hello "/group-creator/"!</div>;
+	return <div>Hello "/group-creator/"!</div>;
 }

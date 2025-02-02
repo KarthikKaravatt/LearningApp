@@ -5,28 +5,30 @@
 	"type": "module",
 	"scripts": {
 		"dev": "bunx --bun vite",
-		"bundle": "bunx --bun tsc -b && bun --bun vite build",
+		"bundle": "tsc -b && bun --env-file=.env.production run scripts/build.ts",
+		"start": "bunx serve build",
 		"preview": "bunx --bun vite preview",
 		"format": "bunx biome format --write ./src/*",
 		"check": "bunx biome check ./src/*"
 	},
 	"dependencies": {
-		"@tailwindcss/vite": "^4.0.1",
-		"@tanstack/react-router": "^1.98.3",
+		"@tanstack/react-router": "^1.99.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
 	},
 	"devDependencies": {
-		"tailwindcss": "^4.0.1",
+		"@tailwindcss/vite": "^4.0.3",
 		"@biomejs/biome": "1.9.4",
-		"@tanstack/router-devtools": "^1.98.3",
-		"@tanstack/router-plugin": "^1.98.3",
-		"@types/bun": "^1.2.1",
+		"@tailwindcss/cli": "^4.0.3",
+		"@tanstack/router-devtools": "^1.99.0",
+		"@tanstack/router-plugin": "^1.99.0",
+		"@types/bun": "^1.2.2",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
 		"@vitejs/plugin-react": "^4.3.4",
 		"globals": "^15.14.0",
+		"tailwindcss": "^4.0.3",
 		"typescript": "^5.7.3",
-		"vite": "^6.0.5"
+		"vite": "^6.0.11"
 	}
 }
